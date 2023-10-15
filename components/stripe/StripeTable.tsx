@@ -37,7 +37,9 @@ const StripePricingTable = ({ user }: Props) => {
 
 <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
 <stripe-pricing-table pricing-table-id="prctbl_1O1Rs7GPCMjaX1HN210OGpvo"
-publishable-key="pk_live_51O1AS6GPCMjaX1HNy4Tzo432twjb2A9vi3zprZvy1G9Og8ioAlTIoDeIAUjv9KeIwa6d6OZOrmuEDwQ71ZKp7Qx000V7voJo9g">
+publishable-key="pk_live_51O1AS6GPCMjaX1HNy4Tzo432twjb2A9vi3zprZvy1G9Og8ioAlTIoDeIAUjv9KeIwa6d6OZOrmuEDwQ71ZKp7Qx000V7voJo9g"
+  client-reference-id={user.id}
+  customer-email={user.email}>
 </stripe-pricing-table>
 
 
