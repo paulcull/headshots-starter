@@ -111,7 +111,8 @@ export async function POST(request: Request) {
     case 'checkout.session.completed':
       const checkoutSessionCompleted = event.data.object as Stripe.Checkout.Session;
       const userId = checkoutSessionCompleted.client_reference_id;
-
+      console.log(checkoutSessionCompleted)
+      console.log(userId)
       if (!userId) {
         return NextResponse.json(
           {
@@ -120,8 +121,9 @@ export async function POST(request: Request) {
           { status: 400, statusText: `Missing client_reference_id` }
         );
       }
-
+      console.log("1")
       const lineItems = await stripe.checkout.sessions.listLineItems(checkoutSessionCompleted.id);
+      console.log("2")
       const quantity = lineItems.data[0].quantity;
       const priceId = lineItems.data[0].price!.id;
       const creditsPerUnit = creditsPerPriceId[priceId];
