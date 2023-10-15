@@ -71,6 +71,9 @@ export async function POST(request: Request) {
   }
 
   const rawBody = await streamToString(request.body);
+  console.log("*************")
+  console.log(rawBody)
+  console.log("*************")
 
   let event;
 
@@ -182,6 +185,7 @@ export async function POST(request: Request) {
       );
 
     default:
+      console.log("Unhandled Event")
       return NextResponse.json(
         {
           message: "error",
