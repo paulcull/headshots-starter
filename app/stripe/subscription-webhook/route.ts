@@ -79,6 +79,9 @@ export async function POST(request: Request) {
 
   try {
     event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret!);
+    console.log("*************")
+    console.log(event.type)
+    console.log("*************")
   } catch (err) {
     const error = err as Error;
     console.log("Error verifying webhook signature: " + error.message);
@@ -103,6 +106,7 @@ export async function POST(request: Request) {
   );
 
   // Handle the event
+  console.log("in the event handler switch")
   switch (event.type) {
     case 'checkout.session.completed':
       const checkoutSessionCompleted = event.data.object as Stripe.Checkout.Session;
@@ -123,6 +127,7 @@ export async function POST(request: Request) {
       const creditsPerUnit = creditsPerPriceId[priceId];
       const totalCreditsPurchased = quantity! * creditsPerUnit;
 
+      console.log("****** here are the details")
       console.log({ lineItems });
       console.log({ quantity });
       console.log({ priceId });
@@ -132,8 +137,10 @@ export async function POST(request: Request) {
 
       const { data: existingCredits } = await supabase.from("credits").select("*").eq("user_id", userId).single();
 
+
       // If user has existing credits, add to it.
       if (existingCredits) {
+        console.log("in existing credit processing")
         const newCredits = existingCredits.credits + totalCreditsPurchased;
         const {
           data, error,
@@ -159,6 +166,7 @@ export async function POST(request: Request) {
         );
       } else {
         // Else create new credits row.
+        console.log("in new credit processing")
         const {
           data, error,
         } = await supabase.from("credits").insert({
