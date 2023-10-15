@@ -114,6 +114,7 @@ export async function POST(request: Request) {
       console.log(checkoutSessionCompleted)
       console.log(userId)
       if (!userId) {
+        console.log("Error, missing client_reference_id")
         return NextResponse.json(
           {
             message: "error",
