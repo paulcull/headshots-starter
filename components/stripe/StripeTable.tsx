@@ -40,6 +40,7 @@ const StripePricingTable = ({ user }: Props) => {
 publishable-key="pk_live_51O1AS6GPCMjaX1HNy4Tzo432twjb2A9vi3zprZvy1G9Og8ioAlTIoDeIAUjv9KeIwa6d6OZOrmuEDwQ71ZKp7Qx000V7voJo9g">
 </stripe-pricing-table>
 
+
       {/* <stripe-pricing-table 
         pricing-table-id="prctbl_1NtEZSCMCmxSLOnr1kGCuIRl" 
         publishable-key="pk_live_51MS6I1CMCmxSLOnrhl3L60fqOQGXesUyz67QnTKMXBsspDEjifIaldAdrPZ5rAfg6A0VCEdNCoLwzwfnfKpD48bO00pvYzF8yG" 
