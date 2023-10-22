@@ -1,4 +1,4 @@
-import { Database } from "@/types/supabase";
+aimport { Database } from "@/types/supabase";
 import { Leap } from "@leap-ai/sdk";
 import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
@@ -116,7 +116,8 @@ export async function POST(request: Request) {
           from: "noreply@headshots.tryleap.ai",
           to: user?.email ?? "",
           subject: "Your model was successfully trained!",
-          html: `<h2>We're writing to notify you that your model training was successful! 1 credit has been used from your account.</h2>`,
+          html: `<h2>We're writing to notify you that your model training was successful! 1 credit has been used from your account.</h2>
+          <h2>Click <a href="https://https://pia-headshots.vercel.app/overview">here</a> to go see them.</h2>`,
         });
       }
 
